@@ -153,7 +153,7 @@
   ],
   "post-processors": [
     {
-      "keep_input_artifact": false,
+      "keep_input_artifact": true,
       "output": "box/{{.Provider}}/{{user `vm_name`}}-{{user `cm`}}{{user `cm_version`}}-{{user `version`}}.box",
       "type": "vagrant",
       "vagrantfile_template": "{{ user `vagrantfile_template` }}"
@@ -168,6 +168,8 @@
         "DESKTOP={{user `desktop`}}",
         "DOCKER={{user `docker`}}",
         "UPDATE={{user `update`}}",
+        "UPDATE_PROXY={{user `update_proxy`}}",
+        "LNMP={{user `lnmp`}}",
         "INSTALL_VAGRANT_KEY={{user `install_vagrant_key`}}",
         "SSH_USERNAME={{user `ssh_username`}}",
         "SSH_PASSWORD={{user `ssh_password`}}",
@@ -198,7 +200,7 @@
   ],
   "variables": {
     "cleanup_pause": "",
-    "cm": "nocm",
+    "cm": "",
     "cm_version": "",
     "cpus": "1",
     "custom_script": ".",
@@ -210,11 +212,11 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "install_vagrant_key": "true",
-    "iso_checksum": "0501c446929f713eb162ae2088d8dc8b6426224a",
+    "iso_checksum": "3ffb7a3690ce9a07ac4a4d1b829f990681f7e47d",
     "iso_checksum_type": "sha1",
-    "iso_name": "ubuntu-14.04.3-server-amd64.iso",
-    "iso_path": "/Volumes/Thunder/software/ubuntu",
-    "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.3-server-amd64.iso",
+    "iso_name": "ubuntu-14.04.4-server-amd64.iso",
+    "iso_path": "/Volumes/App/OS”,
+    "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.4-server-amd64.iso",
     "memory": "512",
     "no_proxy": "{{env `no_proxy`}}",
     "parallels_guest_os_type": "ubuntu",
@@ -224,11 +226,13 @@
     "ssh_fullname": "vagrant",
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
-    "update": "false",
+    "update": "true",
+    "update_proxy": "http://192.168.0.2:8087/",
+    "lnmp": "true",
     "vagrantfile_template": "",
-    "version": "0.1.0",
+    "version": "0.5.9",
     "virtualbox_guest_os_type": "Ubuntu_64",
-    "vm_name": "ubuntu1404",
+    "vm_name": "ubuntu-14.04",
     "vmware_guest_os_type": "ubuntu-64"
   }
 }

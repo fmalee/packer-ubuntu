@@ -22,7 +22,7 @@ dpkg --list | awk '{ print $2 }' | grep -- '-doc$' | xargs apt-get -y purge
 echo "==> Removing development tools"
 #dpkg --list | grep -i compiler | awk '{ print $2 }' | xargs apt-get -y purge
 #apt-get -y purge cpp gcc g++ 
-apt-get -y purge build-essential git
+apt-get -y purge build-essential
 echo "==> Removing default system Ruby"
 apt-get -y purge ruby ri doc
 echo "==> Removing default system Python"
@@ -45,6 +45,11 @@ while [ -n "$(deborphan --guess-all --libdevel)" ]; do
     deborphan --guess-all --libdevel | xargs apt-get -y purge
 done
 apt-get -y purge deborphan dialog
+
+# 将被清理的软件装回去！！！！！
+echo "==> Installing deleted Soft befored"
+apt-get -y install php7.0-xsl
+apt-get -y install software-properties-common
 
 echo "==> Removing man pages"
 rm -rf /usr/share/man/*

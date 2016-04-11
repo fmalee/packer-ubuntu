@@ -69,6 +69,13 @@ set -e
 if [ "x${swapuuid}" != "x" ]; then
     # Whiteout the swap partition to reduce box size
     # Swap is disabled till reboot
+    # Closing MySQL Server
+    if [ -f "/etc/init.d/mysql" ]; then
+        echo '==> Close MySQL Server before clear out swap'
+        service mysql stop
+        sleep 3
+    fi
+
     swappart=$(readlink -f /dev/disk/by-uuid/$swapuuid)
     /sbin/swapoff "${swappart}"
     dd if=/dev/zero of="${swappart}" bs=1M || echo "dd exit code $? is suppressed"
