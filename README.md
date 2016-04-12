@@ -4,22 +4,22 @@
 
 This repository contains [Packer](https://packer.io/) templates for creating Ubuntu Vagrant boxes.
 
-## Current Boxes
+## 简要说明
+个人定制化方案：
+- 增加自动安装配置LNMP脚本
+- 因为网络问题，暂时使用GAE代理更新APT
+- 更换清华大学镜像以提高更新速度
+- 最小化安装的Packages，因为没有代理更新APT会报错
+- 虚拟内存释放(swapoff)命令会因为MySQL服务而失败，清理前停止MySQL服务
+- 其他一些小调整
 
-64-bit boxes:
+使用：
 
-* [Ubuntu Server 15.10 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1510)
-* [Ubuntu Server 14.04.4 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1404)
-* [Ubuntu Desktop 14.04.4 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1404-desktop)
-* [Ubuntu Server 14.04.4 (64-bit) with Docker preinstalled](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1404-docker)
-* [Ubuntu Server 12.04.5 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1204)
-* [Ubuntu Desktop 12.04.5 (64-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1204-desktop)
-* [Ubuntu Server 12.04.5 (64-bit) with Docker preinstalled](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1204-docker)
+    $ packer build -only=virtualbox-iso -var-file=ubuntu1504.json ubuntu.json
 
-32-bit boxes:
+## 脚本来源
 
-* [Ubuntu Server 14.04.4 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1404-i386)
-* [Ubuntu Server 12.04.5 (32-bit)](https://atlas.hashicorp.com/boxcutter/boxes/ubuntu1204-i386)
+[boxcutter](https://github.com/boxcutter/ubuntu)
 
 ## Building the Vagrant boxes with Packer
 

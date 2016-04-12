@@ -200,7 +200,7 @@
   ],
   "variables": {
     "cleanup_pause": "",
-    "cm": "",
+    "cm": "nocm",
     "cm_version": "",
     "cpus": "1",
     "custom_script": ".",
