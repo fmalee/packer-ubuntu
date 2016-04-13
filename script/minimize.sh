@@ -48,7 +48,7 @@ done
 apt-get -y purge deborphan
 
 # 将被清理的软件装回去！！！！！
-echo "==> Installing deleted Soft befored"
+echo "==> Installing deleted packages before"
 apt-get -y install php7.0-xsl
 apt-get -y install software-properties-common
 
