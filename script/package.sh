@@ -1,5 +1,7 @@
 #!/bin/bash -eux
 
+SSH_PASSWORD=${SSH_PASSWORD:-vagrant}
+
 if [[ $LNMP  =~ true || $LNMP =~ 1 || $LNMP =~ yes ]]; then
     echo "==> Adding Apt Repository(Blackfire & PHP)"
 	# 添加add-apt-repository命令
