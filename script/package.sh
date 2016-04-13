@@ -58,7 +58,8 @@ if [[ $LNMP  =~ true || $LNMP =~ 1 || $LNMP =~ yes ]]; then
 	echo "==> Installing ZSH"
 	apt-get -y install zsh
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-	chsh -s /bin/zsh
+	# 切换默认SHELL
+	sed -i.bak "s/\/bin\/bash/\/bin\/zsh/g" /etc/passwd
 
 	echo "==> Installing MySQL 5.6"
 	debconf-set-selections <<< "mysql-server-5.6 mysql-server/root_password password $SSH_PASSWORD"
