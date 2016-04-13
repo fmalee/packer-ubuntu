@@ -7,15 +7,23 @@ This repository contains [Packer](https://packer.io/) templates for creating Ubu
 ## 简要说明
 个人定制化方案：
 - 增加自动安装配置LNMP脚本
-- 因为网络问题，暂时使用GAE代理更新APT
+- 增加代理参数，让脚本根据参数判断更新APT时是否使用代理
 - 更换清华大学镜像以提高更新速度
-- 最小化安装的Packages，因为没有代理更新APT会报错
-- 虚拟内存释放(swapoff)命令会因为MySQL服务而失败，清理前停止MySQL服务
+- 最小化安装的Packages，因为不用代理时小ISP的网络更新APT会出现`Hash Sum mismatch`错误
+- 虚拟内存释放(swapoff)命令会因为MySQL服务而失败，所以清理前停止MySQL服务
+- 安装中文语言包，解决SSH连接时`Per`的`locale`报错问题
 - 其他一些小调整
 
 使用：
 
-    $ packer build -only=virtualbox-iso -var-file=ubuntu1504.json ubuntu.json
+    $ packer build -only=virtualbox-iso -var-file=ubuntu1404.json ubuntu.json
+
+## 待增加
+- 安装了ZSH并切换为默认SHELL，可是重启后还是换回BASH。
+- 分析是否需要预装php-memcached、Redis、HHVM
+- 修改`minimize.sh`脚本，将不需要清理的包排除
+- 调整脚本结构，将需要安装的包（环境）单独处理。
+    现在包安装脚本放在`update.sh`里，因为想让`apt-get update`只执行一次，APT更新只能用代理否则`Hash Sum mismatch`的宝宝心里苦。
 
 ## 脚本来源
 
