@@ -69,19 +69,8 @@ if [[ $LNMP  =~ true || $LNMP =~ 1 || $LNMP =~ yes ]]; then
 	mysql -uroot -p$SSH_PASSWORD -e "grant all on *.* to root@'%' identified by '$SSH_PASSWORD'";
 	mysql -uroot -p$SSH_PASSWORD -e "flush privileges";
 
-# cat > ~/.my.cnf << EOF
-# [client]
-# user = root
-# password = $SSH_PASSWORD
-# EOF
-
-# 	mysql -e "grant all on *.* to root@'%' identified by 'vagrant'";
-# 	mysql -e "flush privileges";
-# 	rm ~/.my.cnf
-
 	# MySQL字符编码
 	sed -i.bak-utf8 "/\[client\]/a\default-character-set=utf8" /etc/mysql/my.cnf
 	sed -i "/\[mysqld\]/a\character-set-server=utf8" /etc/mysql/my.cnf
 	sed -i "/\[mysql\]/a\default-character-set=utf8" /etc/mysql/my.cnf
 fi
-

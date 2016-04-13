@@ -233,7 +233,7 @@
     "vagrantfile_template": "",
     "version": "0.5.9",
     "virtualbox_guest_os_type": "Ubuntu_64",
-    "vm_name": "ubuntu-14.04",
+    "vm_name": "ubuntu-14.04-amd64",
     "vmware_guest_os_type": "ubuntu-64"
   }
 }
