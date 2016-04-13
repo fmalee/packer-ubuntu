@@ -45,7 +45,7 @@ apt-get -y install deborphan
 while [ -n "$(deborphan --guess-all --libdevel)" ]; do
     deborphan --guess-all --libdevel | xargs apt-get -y purge
 done
-apt-get -y purge deborphan dialog
+apt-get -y purge deborphan
 
 # 将被清理的软件装回去！！！！！
 echo "==> Installing deleted Soft befored"
