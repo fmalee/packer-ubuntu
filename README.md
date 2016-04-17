@@ -23,10 +23,11 @@ This repository contains [Packer](https://packer.io/) templates for creating Ubu
 
 ## 待增加
 - `debconf: falling back to frontend: Readline`总是存在，不是`dialog`包的问题，也不是因为`vagrant.sh`修正了`tty`的原因
-- 安装了ZSH并切换为默认SHELL，可是重启后还是换回BASH。
-- 分析是否需要预装php-memcached、Redis、HHVM
+- 安装了ZSH并切换为默认SHELL，可是由于主题问题导致缺少字体而出现乱码。
+- 分析是否需要预装php-memcached、Rredis-server、sqlite3、postgresql、HHVM
 - 修改`minimize.sh`脚本，将不需要清理的包排除
 - Vagrant使用`reload`是经常导致系统非法关机，会停留在GRUB界面30秒，考虑是不是将等待时间设置为1。
+- Parallels tool问题解决一般，因为似乎如果虚拟机非法关机后，Vagrant就回到检查不到Parallels tool的状态
 
 ## 脚本来源
 
