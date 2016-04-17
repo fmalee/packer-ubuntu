@@ -181,8 +181,8 @@
       ],
       "execute_command": "echo '{{ user `ssh_password` }}' | {{.Vars}} sudo -E -S bash -eux '{{.Path}}'",
       "scripts": [
-        "script/update.sh",
         "script/package.sh",
+        "script/update.sh",
         "script/desktop.sh",
         "script/vagrant.sh",
         "script/sshd.sh",
