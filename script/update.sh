@@ -4,12 +4,14 @@
 echo "==> Disabling the release upgrader"
 sed -i.bak 's/^Prompt=.*$/Prompt=never/' /etc/update-manager/release-upgrades
 
-echo "==> Updating list of repositories"
-if [[ $UPDATE_PROXY == false || $UPDATE_PROXY == 0 || $UPDATE_PROXY == no ]]; then
-	apt-get -y update
-else
-	echo "==> Updating with proxy"
-	apt-get -y -o Acquire::http::proxy="$UPDATE_PROXY" update
+if [[ $LNMP  =~ false || $LNMP =~ 0 || $LNMP =~ no ]]; then
+	echo "==> Updating list of repositories"
+	if [[ $UPDATE_PROXY == false || $UPDATE_PROXY == 0 || $UPDATE_PROXY == no ]]; then
+		apt-get -y update
+	else
+		echo "==> Updating with proxy"
+		apt-get -y -o Acquire::http::proxy="$UPDATE_PROXY" update
+	fi
 fi
 
 if [[ $UPDATE  =~ true || $UPDATE =~ 1 || $UPDATE =~ yes ]]; then
