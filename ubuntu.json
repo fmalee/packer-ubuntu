@@ -231,7 +231,7 @@
     "update_proxy": "http://192.168.0.2:8087/",
     "lnmp": "true",
     "vagrantfile_template": "",
-    "version": "0.5.9",
+    "version": "0.8.9",
     "virtualbox_guest_os_type": "Ubuntu_64",
     "vm_name": "ubuntu-14.04-amd64",
     "vmware_guest_os_type": "ubuntu-64"
