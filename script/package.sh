@@ -108,9 +108,13 @@ if [[ $LNMP  =~ true || $LNMP =~ 1 || $LNMP =~ yes ]]; then
 	# sed  -i '/\[mysqld\]/a character-set-client-handshake = FALSE' /etc/mysql/my.cnf
 	# sed  -i '/\[mysqld\]/a character-set-server = utf8mb4' /etc/mysql/my.cnf
 	# sed  -i '/\[mysqld\]/a collation-server = utf8mb4_unicode_ci' /etc/mysql/my.cnf
-	sed -i "/\[client\]/a\default-character-set=utf8" /etc/mysql/my.cnf
-	sed -i "/\[mysqld\]/a\character-set-server=utf8" /etc/mysql/my.cnf
-	sed -i "/\[mysql\]/a\default-character-set=utf8" /etc/mysql/my.cnf
+	sed -i "/\[client\]/a\default-character-set = utf8" /etc/mysql/my.cnf
+	sed -i "/\[mysqld\]/a\collation-server = utf8_general_ci" /etc/mysql/my.cnf
+	sed -i "/\[mysqld\]/a\character-set-server = utf8" /etc/mysql/my.cnf
+	# sed -i "/\[mysql\]/a\default-character-set=utf8" /etc/mysql/my.cnf
+
+	# Configure MySQL default engine to INNODB
+	sed -i "/\[mysqld\]/a\default-storage-engine = INNODB" /etc/mysql/my.cnf
 
 	# Allow remote connections to MySQL server
 	sed -i "s/[# ]*bind-address\([[:space:]]*\)=\([[:space:]]*\).*/bind-address = 0.0.0.0/g" /etc/mysql/my.cnf
